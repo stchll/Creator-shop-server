@@ -9,7 +9,60 @@
 </head>
 <body>
     <div class="wrap">
+        <header>
+            <h1>Creator Shop | Адмін</h1>
+        </header>
 
+        <section class="view" id="view-products">
+            <div class="create-product-modal">
+                <div class="top">
+                    <h3>Додавання товару</h3>
+
+                    <button id="close-create-modal">X</button>
+                </div>
+
+                <form id="create-product-form">
+                    <input name="title" type="text" placeholder="Назва товару" id="create-product-title">
+
+                    <textarea name="dedcription" id="create-product-description" placeholder="Опис товару"></textarea>
+
+                    <select id="product-rating-select" name="rating">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+
+                    <input type="file" id="product-file-select" name="image">
+
+                    <button type="submit" id="product-create-btn">Створити</button>
+                </form>
+            </div>
+
+            <table class="products-table">
+                <thead>
+                    <tr>
+                        <td>Image</td>
+                        <td>Title</td>
+                        <td>Description</td>
+                        <td>Price</td>
+                        <td>Rating</td>
+                        <td>Controll</td>
+                    </tr>
+                </thead>
+
+                <tbody></tbody>
+
+                <tfoot>
+                    <tr>
+                        <td colspan="6">
+                            <button id="create-modal-open">Create New Product</button>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
     </div>
 
     <script src="./main.js"></script>

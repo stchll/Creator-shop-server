@@ -82,18 +82,18 @@ app.get("/products",async (req,res) => {
     res.status(200).json(products)
 })
 
-app.post("/product",async(req,res) => {
+app.post("/product",uplaod.single("image"),async(req,res) => {
     const data = req.body;
 
-    console.log(data);
-    
+    const imagePath = req.file ? `/uplaods/${req.file.filename}` : "";
+
 
     const newProduct = new Product({
         title: data.title,
         description: data.description,
         price: data.price,
         rating: data.rating,
-        image: data.image
+        image: imagePath
     });
 
     const savedProduct = await newProduct.save();
