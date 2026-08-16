@@ -4,13 +4,26 @@ const cors = require("cors");
 const path = require("path");
 const fs = require("fs");
 const bodyParser = require("body-parser");
+const rateLimit = require("express-rate-limit");
 const mongoose = require("mongoose");
 const multer = require("multer");
 const dns = require("dns");
 
 require("dotenv").config();
 
+let lastPost
+
 const PORT = process.env.PORT || 3000;
+
+const productLimiter = rateLimit({
+    windowMs: 10 * 1000,
+    max: 1,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: {
+        error: "Too many requests. Try again later."
+    }
+});
 
 const uploadsDir = path.join(__dirname, "uploads");
 if (!fs.existsSync(uploadsDir)) {
@@ -70,8 +83,16 @@ app.get("/products", async (req, res) => {
     }
 });
 
-app.post("/product", upload.single("image"), async (req, res) => {
+app.post("/product", productLimiter, upload.single("image"), async (req, res) => {
     try {
+        if (lastPost) {
+            if (lastPost - Date.now() < 10000) {
+                res.status(404).send("Spam detected")
+            }
+        } else {
+            lastPost = Date.now()
+        }
+
         const data = req.body;
         const imagePath = req.file ? `/uploads/${req.file.filename}` : "";
 
