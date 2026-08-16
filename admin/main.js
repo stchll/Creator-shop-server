@@ -81,9 +81,9 @@ async function reloadProducts() {
 createProductForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const formData = new FormData(createProductForm);
-
     productCreateBtn.textContent = "Створення..."
+
+    const formData = new FormData(createProductForm);
 
     try {
         const response = await fetch(`${URL}/product`, {
