@@ -59,9 +59,9 @@ async function reloadProducts() {
                 <td>${product.description}</td>
                 <td>${product.price}</td>
                 <td>${product.rating}</td>
-                <td>
-                    <button>Edit</button>
-                    <button class="delete-btn">Delete</button>
+                <td class="controll-cell">
+                    <button><i class="fa-solid fa-pen"></i></button>
+                    <button class="delete-btn"><i class="fa-solid fa-trash"></i></button>
                 </td>
             `;
 
