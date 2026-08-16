@@ -81,6 +81,7 @@ header {
 
 }
 
+
 .products-table {
     border-collapse: collapse;
 }
@@ -116,6 +117,12 @@ td {
 
 .products-table tfoot {
     text-align: center;
+}
+
+.products-table tfoot td {
+    width: 100%;
+    text-align: center;
+    border: none;
 }
 
 .products-table tfoot button {

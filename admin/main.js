@@ -7,6 +7,8 @@ const createModalCloseBtn = document.getElementById("close-create-modal");
 
 const createProductForm = document.getElementById("create-product-form");
 
+const productCreateBtn = document.getElementById("product-create-btn")
+
 const URL = "https://creator-shop-server.onrender.com";
 
 async function fetchProducts() {
@@ -81,6 +83,8 @@ createProductForm.addEventListener("submit", async (e) => {
 
     const formData = new FormData(createProductForm);
 
+    productCreateBtn.textContent = "Створення..."
+
     try {
         const response = await fetch(`${URL}/product`, {
             method: "POST",
@@ -93,6 +97,7 @@ createProductForm.addEventListener("submit", async (e) => {
         }
 
         createProductForm.reset();
+        productCreateBtn.textContent = "Створити"
         creatingModal.style.display = "none";
         await reloadProducts();
     } catch (error) {
