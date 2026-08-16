@@ -11,12 +11,12 @@ const dns = require("dns");
 
 require("dotenv").config();
 
-let lastPost
+
 
 const PORT = process.env.PORT || 3000;
 
 const productLimiter = rateLimit({
-    windowMs: 10 * 1000,
+    windowMs: 5 * 1000,
     max: 1,
     standardHeaders: true,
     legacyHeaders: false,
@@ -85,14 +85,6 @@ app.get("/products", async (req, res) => {
 
 app.post("/product", productLimiter, upload.single("image"), async (req, res) => {
     try {
-        if (lastPost) {
-            if (lastPost - Date.now() < 10000) {
-                res.status(404).send("Spam detected")
-            }
-        } else {
-            lastPost = Date.now()
-        }
-
         const data = req.body;
         const imagePath = req.file ? `/uploads/${req.file.filename}` : "";
 
