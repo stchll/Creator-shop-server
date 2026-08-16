@@ -7,7 +7,7 @@ const createModalCloseBtn = document.getElementById("close-create-modal");
 
 const createProductForm = document.getElementById("create-product-form");
 
-const URL = "https://creator-shop-server.onrender.com/";
+const URL = "https://creator-shop-server.onrender.com";
 
 async function fetchProducts() {
     try {
