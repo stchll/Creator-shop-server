@@ -1,3 +1,5 @@
+const loadingPage = document.querySelector(".loadingPage");
+
 const productsBody = document.querySelector(".products-table tbody");
 
 const creatingModal = document.querySelector(".create-product-modal");
@@ -22,7 +24,7 @@ async function fetchProducts() {
 
         const products = await response.json();
         return products;
-    } catch(error) {
+    } catch (error) {
         console.error("Can't fetch products!");
     }
 }
@@ -39,7 +41,7 @@ async function deleteProduct(id) {
         }
 
         await reloadProducts();
-    } catch(error) {
+    } catch (error) {
         console.error("Can't delete!", error);
     }
 }
@@ -62,7 +64,7 @@ async function reloadProducts() {
                 <td>${product.price}</td>
                 <td>${product.rating}</td>
                 <td class="controll-cell">
-                    <button><i class="fa-solid fa-pen"></i></button>
+                    <button class="edit-btn"><i class="fa-solid fa-pen"></i></button>
                     <button class="delete-btn"><i class="fa-solid fa-trash"></i></button>
                 </td>
             `;
@@ -84,6 +86,12 @@ createProductForm.addEventListener("submit", async (e) => {
     productCreateBtn.textContent = "Створення..."
 
     const formData = new FormData(createProductForm);
+
+    const categorySelect = document.getElementById("categories");
+    const selectedCategories = Array.from(categorySelect.selectedOptions).map(opt => opt.value);
+
+    formData.delete("categories");
+    formData.append("categories", JSON.stringify(selectedCategories));
 
     try {
         const response = await fetch(`${URL}/product`, {
@@ -114,3 +122,7 @@ createModalOpenBtn.addEventListener("click", () => {
 createModalCloseBtn.addEventListener("click", () => {
     creatingModal.style.display = "none";
 });
+
+setTimeout(() => {
+    loadingPage.classList.add("hide");
+}, 1400);

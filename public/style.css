@@ -1,0 +1,271 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat Alternates";
+    
+}
+
+.loadingPage {
+    width: 100%;
+    height: 100dvh;
+    position: fixed;
+    inset: 0;
+    background-color: #111;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 999;
+
+    opacity: 1;
+    visibility: visible;
+    transition: 0.5s ease;
+}
+
+.loadingPage.hide {
+    opacity: 0;
+    top: -100%;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loadingPage h1 {
+    color: #fff;
+    font-size: 44px;
+    animation: opacity 3s ease-in-out;
+}
+
+.loadingPage h1 span {
+    color: orangered;
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.wrap {
+    width: 100%;
+    min-height: 100dvh;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: #111;
+    color: #fff;
+}
+
+header {
+    width: 100%;
+    height: 10dvh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2%;
+}
+
+.homePage {
+    width: 100%;
+    height: 90dvh;
+    display: flex;
+
+}
+
+.homePage .textPart {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.homePage .textPart .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: #fff;
+}
+
+.homePage .textPart .wrapper .buttons {
+    gap: 1rem;
+}
+
+.homePage .textPart .wrapper .buttons button {
+    background-color: orange;
+    padding: 5px 20px;
+    cursor: pointer;
+}
+
+
+
+.aboutPage {
+    width: 100%;
+    height: 30dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.aboutPage .titlePart {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aboutPage .titlePart h2 {
+    font-size: 2rem;
+}
+
+.aboutPage .titlePart h2 span {
+    color: orange;
+}
+
+.aboutPage .textPart {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aboutPage .textPart p {
+    font-size: 1.5rem;
+}
+
+
+
+.goodsPage {
+    width: 100%;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.goodsPage .titlePart {
+    width: 100%;
+    height: 10dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.goodsPage .titlePart h2 {
+    font-size: 2rem;
+}
+.goodsPage .titlePart h2 span {
+    color: orange;
+}
+
+.goodsPage .categoriesPart {
+    width: 100%;
+    height: 10dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+.goodsPage .categoriesPart .titlePart {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.goodsPage .categoriesPart .categoryPart {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+.goodsPage .categoriesPart .categoryPart button {
+    padding: 5px 20px;
+    border: 2px dashed orange;
+    background-color: transparent;
+    cursor: pointer;
+    color: #fff;
+}
+
+.goodsPage .categoriesPart .categoryPart button.selected {
+    background-color: orange;
+    outline: 2px dashed orange;
+}
+
+.goodsPart {
+    width: 100%;
+    min-height: 80dvh;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.goodsPart .card {
+    width: 330px;
+    height: 400px;
+    border: 2px solid orange;
+    padding: 0.5rem;
+}
+
+.goodsPart .card .imagePart {
+    width: 100%;
+    height: 70%;
+}
+
+.goodsPart .card .imagePart img {
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+
+.goodsPart .card .dataPart {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    transition: 0.3s ease-in-out;
+}
+
+.goodsPart .card .dataPart .activePage {
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.goodsPart .card .dataPart .activePage button {
+    border: none;
+    background-color: orange;
+    font-size: 1rem;
+    padding: 10px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+    .homePage {
+        flex-direction: column-reverse;
+
+    }
+
+    .homePage .textPart
+    ,.homePage .imagePart {
+        width: 100%;
+        height: 50%;
+
+    }
+
+}

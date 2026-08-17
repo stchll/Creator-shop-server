@@ -8,15 +8,14 @@ const rateLimit = require("express-rate-limit");
 const mongoose = require("mongoose");
 const multer = require("multer");
 const dns = require("dns");
+const { type } = require("os");
 
 require("dotenv").config();
-
-
 
 const PORT = process.env.PORT || 3000;
 
 const productLimiter = rateLimit({
-    windowMs: 5 * 1000,
+    windowMs: 1 * 1000,
     max: 1,
     standardHeaders: true,
     legacyHeaders: false,
@@ -32,7 +31,7 @@ if (!fs.existsSync(uploadsDir)) {
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "admin")));
+app.use(express.static(path.join(__dirname, "public")));
 app.use("/uploads", express.static(uploadsDir));
 
 const storage = multer.diskStorage({
@@ -69,10 +68,15 @@ const productSchema = new mongoose.Schema({
     description: String,
     price: Number,
     rating: Number,
+    categories: {type: [String],default: []},
     image: String,
 });
 
 const Product = mongoose.model("Product", productSchema);
+
+app.get("/admin", (req,res) => {
+    res.send(path.join(__dirname, "public", "admin" , "index.html"))
+})
 
 app.get("/products", async (req, res) => {
     try {
