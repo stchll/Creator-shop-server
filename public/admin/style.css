@@ -55,7 +55,7 @@
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
-    background-color: #111;
+    background-color: #222;
     color: #fff;
 }
 
@@ -77,14 +77,14 @@ header {
 }
 
 .create-product-modal {
-    width: 500px;
+    width: 450px;
     height: 400px;
     position: fixed;
     left: 50%;
     top: 50%;
     translate: -50% -50%;
-    border: 1px solid #000;
-    background-color: #fff;
+    border: 1px solid orange;
+    background-color: #111;
     padding: 0.5rem;
     display: none;
 }
@@ -118,12 +118,28 @@ header {
     flex-direction: column;
 }
 
+.create-product-modal form input,
+.create-product-modal form textarea {
+    background-color: transparent;
+    border: 1px solid orange;
+    outline: none;
+    color: #fff;
+    width: 80%;
+    padding: 5px 10px;
+    max-width: 80%;
+    min-width: 80%;
+}
+
+.create-product-modal form textarea {
+    max-height: 20%;
+    min-height: 20%;
+}
+
 .create-product-modal form button {
     padding: 5px 10px;
-    background-color: #278100;
-    border: none;
+    background-color: transparent;
+    border: 1px solid orange;
     color: #fff;
-    border-radius: 10px;
     cursor: pointer;
 
 }
@@ -146,7 +162,7 @@ header {
 }
 
 .products-table thead {
-   border: 1px solid orange;
+    border: 1px solid orange;
 }
 
 .products-table thead th {

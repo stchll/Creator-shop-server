@@ -87,6 +87,9 @@ createProductForm.addEventListener("submit", async (e) => {
 
     const formData = new FormData(createProductForm);
 
+    console.log(formData);
+    
+
     const categorySelect = document.getElementById("categories");
     const selectedCategories = Array.from(categorySelect.selectedOptions).map(opt => opt.value);
 
